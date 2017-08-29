@@ -11,6 +11,11 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = User.find(params[:id])
+    if @user.id != current_user.id
+      redirect_to root_path
+      flash[:alert] = "無効なユーザー"
+    end
   end
 
   def update
