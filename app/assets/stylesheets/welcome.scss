@@ -1,3 +1,13 @@
-// Place all the styles related to the welcome controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.header-image {
+    background-image: url(https://s3-ap-northeast-1.amazonaws.com/coffee-cup/images/header/header12.jpg);
+    height: 400px;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+.header-content {
+    font-size: 75px;
+    padding-top: 150px;
+}
