@@ -8,24 +8,6 @@ p
 p
   | 自己紹介：#{@user.self_introduction}
 hr
-h4
-  | 伝言板
-- @messages.each do |m|
-  hr
-  h5
-    | #{m.id}：
-    = link_to "#{m.user.family_name} #{m.user.first_name}", user_path(m.user_id)
-  pre
-    = m.content
-hr
-= form_for @message do |f|
-  p
-    = f.text_area :content, class: 'form-control my-form', placeholder: '何か伝言を残そう！'
-  = f.hidden_field :receiver, value: @user.id
-  br
-  p
-    = f.submit "登録", class: 'btn btn-warning'
-hr
 p
   = link_to "ユーザー一覧に戻る", users_path
 - if @user.id == current_user.id

@@ -8,8 +8,6 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @messages = Message.where(receiver: @user.id)
-    @message = Message.new
   end
 
   def edit
