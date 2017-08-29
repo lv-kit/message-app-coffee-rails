@@ -1,15 +1,24 @@
-h1
-  | ユーザー情報
-hr
-p
-  | 名前：#{@user.family_name} #{@user.first_name} さん
-p
-  | 年齢：#{@user.age}歳
-p
-  | 自己紹介：#{@user.self_introduction}
-hr
-p
-  = link_to "ユーザー一覧に戻る", users_path
-- if @user.id == current_user.id
-  p
-    = link_to "ユーザー情報を編集する", edit_user_path(@user), class: 'btn btn-success'
+.row
+  .col-xs-6
+    h1
+      | ユーザー情報
+    hr
+    p
+      | 名前：#{@user.family_name} #{@user.first_name} さん
+    p
+      | 年齢：#{@user.age}歳
+    p
+      | 自己紹介：#{@user.self_introduction}
+    br
+    - if @user.id == current_user.id
+      p
+        = link_to "ユーザー情報を編集する", edit_user_path(@user.id)
+    - else
+      = form_for @room do |f|
+        = f.submit "チャットを始める", class: 'btn btn-warning'
+    hr
+    p
+      = link_to "ユーザー一覧に戻る", users_path
+    - if @user.id == current_user.id
+      p
+        = link_to "ユーザー情報を編集する", edit_user_path(@user), class: 'btn btn-success'
