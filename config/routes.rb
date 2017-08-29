@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   resources :welcome, only: [:index]
   resources :users, only: [:index, :show, :edit, :update]
   resources :messages, only: [:create]
+  resources :rooms, only: [:index, :show, :create, :edit, :update]
   root "welcome#index"
 end
