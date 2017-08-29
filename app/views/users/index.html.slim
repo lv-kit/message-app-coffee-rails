@@ -3,6 +3,6 @@ h1
 hr
 - @users.each do |u|
   p
-    = link_to "#{u.family_name} #{u.first_name}さん"
+    = link_to "#{u.family_name} #{u.first_name}さん", user_path(u)
   hr
 = link_to "トップに戻る", root_path, class: 'btn btn-info'
