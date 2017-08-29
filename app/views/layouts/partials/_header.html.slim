@@ -13,7 +13,7 @@ nav#mainNav.navbar.navbar-default.navbar-fixed-top
       ul.nav.navbar-nav.navbar-right
         - if user_signed_in?
           li
-            = link_tp "ログアウト", destroy_user_session_path
+            = link_to "ログアウト", destroy_user_session_path
         - else
           li
             = link_to "登録する", new_user_registration_path
