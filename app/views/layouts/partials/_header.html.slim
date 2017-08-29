@@ -13,6 +13,10 @@ nav#mainNav.navbar.navbar-default.navbar-fixed-top
       ul.nav.navbar-nav.navbar-right
         - if user_signed_in?
           li
+            = link_to "ユーザー一覧", users_path
+          li
+            = link_to "#{current_user.family_name} #{current_user.first_name}さん", user_path(current_user.id)
+          li
             = link_to "ログアウト", destroy_user_session_path, method: :delete
         - else
           li
