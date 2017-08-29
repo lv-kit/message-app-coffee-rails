@@ -1,0 +1,43 @@
+br
+.row
+  .col-xs-3.text-center
+    h4
+      = @room.name
+    h4
+      small
+        = @room.explain
+    hr
+    = link_to "情報を編集する"
+  .col-xs-9.text-center
+    - if @messages.present?
+      - @messages.each do |m|
+        - if m.user_id == current_user.id
+          h4.text-right
+            p.alert.alert-success
+              = m.content
+              br
+              br
+              small
+                strong
+                  = link_to "#{m.user.family_name} #{m.user.first_name}", user_path(m.user_id)
+        - else
+          h4.text-left
+            p.alert.alert-info
+              = m.content
+              br
+              br
+              small
+                strong
+                  = link_to "#{m.user.family_name} #{m.user.first_name}", user_path(m.user_id)
+    - else
+      br
+      h3.text-center
+        | メッセージはまだありません。
+      br
+    hr
+    = form_for @message do |f|
+      = f.text_field :content, class: 'form-control my-form', placeholder: 'メッセージを入力してください。'
+      = f.hidden_field :room_id, value: @room.id
+      br
+      = f.submit "投稿する", class: 'btn btn-primary'
+          
