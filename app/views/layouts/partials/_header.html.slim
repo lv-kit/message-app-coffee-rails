@@ -11,3 +11,11 @@ nav#mainNav.navbar.navbar-default.navbar-fixed-top
         | Message-app
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
       ul.nav.navbar-nav.navbar-right
+        - if user_signed_in?
+          li
+            = link_tp "ログアウト", destroy_user_session_path
+        - else
+          li
+            = link_to "登録する", new_user_registration_path
+          li
+            = link_to "ログイン", new_user_session_path
