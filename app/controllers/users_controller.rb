@@ -8,6 +8,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    if @user.id != current_user.id
+      @room = Room.new
+    end
   end
 
   def edit
