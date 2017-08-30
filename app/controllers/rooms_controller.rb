@@ -12,9 +12,13 @@ class RoomsController < ApplicationController
 
   def show
     @room = Room.find(params[:id])
-    @messages = @room.messages
-    @message = Message.new
-    @entries = @room.entries
+    if Entry.where(user_id: current_user.id)
+      @messages = @room.messages
+      @message = Message.new
+      @entries = @room.entries
+    else
+      redirect_back(fallback_location: room_path)
+    end
   end
 
   def index
