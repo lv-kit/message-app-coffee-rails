@@ -36,11 +36,14 @@ class RoomsController < ApplicationController
 
   def update
     @room = Room.find(params[:id])
-    if @room.update(room_params)
-      flash[:notice] = "チャット情報が変更されました。"
-      redirect_back(fallback_location: edit_room_path(@room.id))
+    if Entry.where(user_id: current_user.id, room_id: @room.id).present?
+      if @room.update(room_params)
+        flash[:notice] = "チャット情報が変更されました。"
+        redirect_back(fallback_location: edit_room_path(@room.id))
+      end
     else
-      render 'edit'
+      flash[:alert] = "無効なユーザー"
+      redirect_back(fallback_location: rooms_path)
     end
   end
 
