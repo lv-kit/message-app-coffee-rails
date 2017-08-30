@@ -12,12 +12,12 @@ class RoomsController < ApplicationController
 
   def show
     @room = Room.find(params[:id])
-    if Entry.where(user_id: current_user.id)
+    if Entry.where(user_id: current_user.id, room_id: @room.id).present?
       @messages = @room.messages
       @message = Message.new
       @entries = @room.entries
     else
-      redirect_back(fallback_location: room_path)
+      redirect_back(fallback_location: rooms_path)
       flash[:alert] = "無効なユーザー"
     end
   end
@@ -28,6 +28,10 @@ class RoomsController < ApplicationController
 
   def edit
     @room = Room.find(params[:id])
+    if !Entry.where(user_id: current_user.id, room_id: @room.id).present?
+      flash[:alert] = "無効なユーザー"
+      redirect_back(fallback_location: rooms_path)
+    end
   end
 
   def update
