@@ -19,9 +19,17 @@ class RoomsController < ApplicationController
   end
 
   def edit
+    @room = Room.find(params[:id])
   end
 
   def update
+    @room = Room.find(params[:id])
+    if @room.update(room_params)
+      flash[:notice] = "チャット情報が変更されました。"
+      redirect_back(fallback_location: edit_room_path(@room.id))
+    else
+      render 'edit'
+    end
   end
 
   private
