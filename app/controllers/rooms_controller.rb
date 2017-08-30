@@ -18,6 +18,7 @@ class RoomsController < ApplicationController
       @entries = @room.entries
     else
       redirect_back(fallback_location: room_path)
+      flash[:alert] = "無効なユーザー"
     end
   end
 
