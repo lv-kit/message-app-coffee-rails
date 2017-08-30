@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20170829134708) do
 
   create_table "rooms", force: :cascade do |t|
     t.string "name", default: "新規チャット"
-    t.text "explain"
+    t.text "explain", default: "説明を入力してください"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
