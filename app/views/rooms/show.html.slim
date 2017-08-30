@@ -7,6 +7,12 @@ br
       small
         = @room.explain
     hr
+    h4
+      | 参加者
+    - @entries.each do |e|
+      h5
+        strong
+          = link_to "#{e.user.family_name} #{e.user.first_name}", user_path(e.user.id)
     = link_to "情報を編集する", edit_room_path(@room.id), class: 'btn btn-success'
   .col-xs-9.text-center
     - if @messages.present?

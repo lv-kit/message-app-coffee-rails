@@ -10,15 +10,14 @@
     p
       | 自己紹介：#{@user.self_introduction}
     br
-    - if @user.id == current_user.id
-      p
-        = link_to "ユーザー情報を編集する", edit_user_path(@user.id)
-    - else
+    - if @user.id != current_user.id
       = form_for @room do |f|
+        = fields_for @entry do |e|
+          = e.hidden_field :user_id, value: @user.id
         = f.submit "チャットを始める", class: 'btn btn-warning'
     hr
     p
-      = link_to "ユーザー一覧に戻る", users_path
+      = link_to "ユーザー一覧に戻る", users_path, class: 'btn btn-primary'
     - if @user.id == current_user.id
       p
         = link_to "ユーザー情報を編集する", edit_user_path(@user), class: 'btn btn-success'
