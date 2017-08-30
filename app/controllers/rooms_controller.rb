@@ -18,7 +18,7 @@ class RoomsController < ApplicationController
   end
 
   def index
-    @rooms = Room.all
+    @entries = current_user.entries
   end
 
   def edit

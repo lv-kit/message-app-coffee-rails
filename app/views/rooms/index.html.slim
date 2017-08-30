@@ -1,8 +1,8 @@
 h1
   | チャット一覧
 hr
-- @rooms.each do |r|
-  = link_to r.name, room_path(r.id)
+- @entries.each do |e|
+  = link_to e.room.name, room_path(e.room_id)
   hr
 p
   = link_to "#{current_user.family_name} #{current_user.first_name}さんの情報に戻る", user_path(current_user.id), class: 'btn btn-primary'
