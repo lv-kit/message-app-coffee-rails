@@ -19,16 +19,17 @@
           = e.hidden_field :user_id, value: @user.id
         = f.submit "チャットを始める", class: 'btn btn-warning'
   - if @user.id == current_user.id
-  .col-xs-6
-    h1
-      | チャット一覧
-    hr
-    - @entries.each do |e|
-      p
-        strong
-          = link_to e.room.name, room_path(e.room.id)
+    .col-xs-6
+      h1
+        | チャット一覧
       hr
-    = link_to "チャット一覧を見る", rooms_path, class: 'btn btn-info'
+      - @entries.each do |e|
+        p
+          strong
+            = link_to e.room.name, room_path(e.room.id)
+        hr
+
+      = link_to "チャット一覧を見る", rooms_path, class: 'btn btn-info'
 
 hr
 p.text-center
