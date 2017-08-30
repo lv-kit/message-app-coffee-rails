@@ -7,7 +7,7 @@ br
       small
         = @room.explain
     hr
-    = link_to "情報を編集する"
+    = link_to "情報を編集する", edit_room_path(@room.id), class: 'btn btn-success'
   .col-xs-9.text-center
     - if @messages.present?
       - @messages.each do |m|
